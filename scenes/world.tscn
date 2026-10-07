@@ -1,0 +1,491 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/tree.tscn" id="1_tree"]
+[ext_resource type="PackedScene" path="res://scenes/rock.tscn" id="2_rock"]
+[ext_resource type="PackedScene" path="res://scenes/bush.tscn" id="3_bush"]
+[ext_resource type="PackedScene" path="res://scenes/book.tscn" id="4_book"]
+[ext_resource type="PackedScene" path="res://scenes/dummy.tscn" id="5_dummy"]
+
+[sub_resource type="RectangleShape2D" id="wall_h"]
+size = Vector2(10400, 100)
+
+[sub_resource type="RectangleShape2D" id="wall_v"]
+size = Vector2(100, 10400)
+
+[node name="World" type="Node2D"]
+
+[node name="Ground" type="Polygon2D" parent="."]
+z_index = -10
+color = Color(0.33, 0.34, 0.25, 1)
+polygon = PackedVector2Array(0, 0, 10000, 0, 10000, 10000, 0, 10000)
+
+[node name="Roads" type="Node2D" parent="."]
+z_index = -5
+
+[node name="Highway" type="Line2D" parent="Roads"]
+points = PackedVector2Array(0, 5200, 2500, 5100, 5000, 5000, 7500, 5150, 10000, 5000)
+width = 70.0
+default_color = Color(0.16, 0.16, 0.18, 1)
+joint_mode = 2
+antialiased = true
+
+[node name="HighwayMarking" type="Line2D" parent="Roads"]
+points = PackedVector2Array(0, 5200, 2500, 5100, 5000, 5000, 7500, 5150, 10000, 5000)
+width = 3.0
+default_color = Color(0.62, 0.55, 0.28, 0.65)
+joint_mode = 2
+antialiased = true
+
+[node name="CrossRoad" type="Line2D" parent="Roads"]
+points = PackedVector2Array(5000, 0, 5050, 2500, 5000, 5000, 4900, 7500, 5100, 10000)
+width = 60.0
+default_color = Color(0.19, 0.19, 0.2, 1)
+joint_mode = 2
+antialiased = true
+
+[node name="CrossRoadMarking" type="Line2D" parent="Roads"]
+points = PackedVector2Array(5000, 0, 5050, 2500, 5000, 5000, 4900, 7500, 5100, 10000)
+width = 3.0
+default_color = Color(0.62, 0.55, 0.28, 0.65)
+joint_mode = 2
+antialiased = true
+
+[node name="DirtRoad" type="Line2D" parent="Roads"]
+points = PackedVector2Array(2500, 5100, 2300, 6500, 1500, 8500, 1200, 10000)
+width = 40.0
+default_color = Color(0.33, 0.27, 0.19, 1)
+joint_mode = 2
+antialiased = true
+
+[node name="Bounds" type="StaticBody2D" parent="."]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Top" type="CollisionShape2D" parent="Bounds"]
+position = Vector2(5000.0, -50)
+shape = SubResource("wall_h")
+
+[node name="Bottom" type="CollisionShape2D" parent="Bounds"]
+position = Vector2(5000.0, 10050)
+shape = SubResource("wall_h")
+
+[node name="Left" type="CollisionShape2D" parent="Bounds"]
+position = Vector2(-50, 5000.0)
+shape = SubResource("wall_v")
+
+[node name="Right" type="CollisionShape2D" parent="Bounds"]
+position = Vector2(10050, 5000.0)
+shape = SubResource("wall_v")
+
+[node name="Trees" type="Node2D" parent="."]
+
+[node name="Tree01" parent="Trees" instance=ExtResource("1_tree")]
+position = Vector2(4313, 5911)
+scale = Vector2(1.21, 1.21)
+
+[node name="Tree02" parent="Trees" instance=ExtResource("1_tree")]
+position = Vector2(6506, 4199)
+scale = Vector2(1.2, 1.2)
+
+[node name="Tree03" parent="Trees" instance=ExtResource("1_tree")]
+position = Vector2(5041, 6430)
+scale = Vector2(1.2, 1.2)
+
+[node name="Tree04" parent="Trees" instance=ExtResource("1_tree")]
+position = Vector2(4218, 5520)
+scale = Vector2(1.05, 1.05)
+
+[node name="Tree05" parent="Trees" instance=ExtResource("1_tree")]
+position = Vector2(6394, 3518)
+scale = Vector2(1.29, 1.29)
+
+[node name="Tree06" parent="Trees" instance=ExtResource("1_tree")]
+position = Vector2(4544, 5334)
+scale = Vector2(0.93, 0.93)
+
+[node name="Tree07" parent="Trees" instance=ExtResource("1_tree")]
+position = Vector2(6236, 5878)
+scale = Vector2(1.28, 1.28)
+
+[node name="Tree08" parent="Trees" instance=ExtResource("1_tree")]
+position = Vector2(5231, 6361)
+scale = Vector2(1.29, 1.29)
+
+[node name="Tree09" parent="Trees" instance=ExtResource("1_tree")]
+position = Vector2(4893, 3729)
+scale = Vector2(0.91, 0.91)
+
+[node name="Tree10" parent="Trees" instance=ExtResource("1_tree")]
+position = Vector2(4329, 5325)
+scale = Vector2(0.9, 0.9)
+
+[node name="Tree11" parent="Trees" instance=ExtResource("1_tree")]
+position = Vector2(4237, 5376)
+scale = Vector2(1.11, 1.11)
+
+[node name="Tree12" parent="Trees" instance=ExtResource("1_tree")]
+position = Vector2(5899, 3407)
+scale = Vector2(1.04, 1.04)
+
+[node name="Tree13" parent="Trees" instance=ExtResource("1_tree")]
+position = Vector2(6074, 4809)
+scale = Vector2(1.2, 1.2)
+
+[node name="Tree14" parent="Trees" instance=ExtResource("1_tree")]
+position = Vector2(3747, 6105)
+scale = Vector2(0.86, 0.86)
+
+[node name="Tree15" parent="Trees" instance=ExtResource("1_tree")]
+position = Vector2(5358, 4131)
+scale = Vector2(1.02, 1.02)
+
+[node name="Tree16" parent="Trees" instance=ExtResource("1_tree")]
+position = Vector2(3755, 6356)
+
+[node name="Tree17" parent="Trees" instance=ExtResource("1_tree")]
+position = Vector2(4050, 4096)
+scale = Vector2(1.3, 1.3)
+
+[node name="Tree18" parent="Trees" instance=ExtResource("1_tree")]
+position = Vector2(3512, 4019)
+scale = Vector2(1.1, 1.1)
+
+[node name="Tree19" parent="Trees" instance=ExtResource("1_tree")]
+position = Vector2(5306, 6086)
+scale = Vector2(0.87, 0.87)
+
+[node name="Tree20" parent="Trees" instance=ExtResource("1_tree")]
+position = Vector2(5840, 5342)
+scale = Vector2(1.13, 1.13)
+
+[node name="Tree21" parent="Trees" instance=ExtResource("1_tree")]
+position = Vector2(4835, 4038)
+scale = Vector2(1.07, 1.07)
+
+[node name="Tree22" parent="Trees" instance=ExtResource("1_tree")]
+position = Vector2(3936, 3487)
+scale = Vector2(0.81, 0.81)
+
+[node name="Tree23" parent="Trees" instance=ExtResource("1_tree")]
+position = Vector2(6375, 6061)
+scale = Vector2(0.85, 0.85)
+
+[node name="Tree24" parent="Trees" instance=ExtResource("1_tree")]
+position = Vector2(6469, 3970)
+scale = Vector2(1.02, 1.02)
+
+[node name="Tree25" parent="Trees" instance=ExtResource("1_tree")]
+position = Vector2(4197, 4264)
+scale = Vector2(0.81, 0.81)
+
+[node name="Tree26" parent="Trees" instance=ExtResource("1_tree")]
+position = Vector2(4271, 4599)
+scale = Vector2(1.05, 1.05)
+
+[node name="Tree27" parent="Trees" instance=ExtResource("1_tree")]
+position = Vector2(6528, 5802)
+scale = Vector2(0.96, 0.96)
+
+[node name="Tree28" parent="Trees" instance=ExtResource("1_tree")]
+position = Vector2(3936, 3649)
+scale = Vector2(1.26, 1.26)
+
+[node name="Tree29" parent="Trees" instance=ExtResource("1_tree")]
+position = Vector2(4849, 5276)
+scale = Vector2(1.13, 1.13)
+
+[node name="Tree30" parent="Trees" instance=ExtResource("1_tree")]
+position = Vector2(5516, 5122)
+scale = Vector2(1.21, 1.21)
+
+[node name="Tree31" parent="Trees" instance=ExtResource("1_tree")]
+position = Vector2(5454, 3935)
+scale = Vector2(1.07, 1.07)
+
+[node name="Tree32" parent="Trees" instance=ExtResource("1_tree")]
+position = Vector2(5544, 5491)
+scale = Vector2(0.81, 0.81)
+
+[node name="Tree33" parent="Trees" instance=ExtResource("1_tree")]
+position = Vector2(5202, 6580)
+scale = Vector2(0.89, 0.89)
+
+[node name="Tree34" parent="Trees" instance=ExtResource("1_tree")]
+position = Vector2(3416, 6578)
+scale = Vector2(1.2, 1.2)
+
+[node name="Tree35" parent="Trees" instance=ExtResource("1_tree")]
+position = Vector2(4105, 3979)
+scale = Vector2(1.04, 1.04)
+
+[node name="Tree36" parent="Trees" instance=ExtResource("1_tree")]
+position = Vector2(6370, 3892)
+scale = Vector2(1.08, 1.08)
+
+[node name="Tree37" parent="Trees" instance=ExtResource("1_tree")]
+position = Vector2(4735, 6194)
+scale = Vector2(1.06, 1.06)
+
+[node name="Tree38" parent="Trees" instance=ExtResource("1_tree")]
+position = Vector2(5675, 5376)
+scale = Vector2(1.19, 1.19)
+
+[node name="Tree39" parent="Trees" instance=ExtResource("1_tree")]
+position = Vector2(3834, 5694)
+scale = Vector2(0.83, 0.83)
+
+[node name="Tree40" parent="Trees" instance=ExtResource("1_tree")]
+position = Vector2(4183, 4534)
+scale = Vector2(0.82, 0.82)
+
+[node name="Tree41" parent="Trees" instance=ExtResource("1_tree")]
+position = Vector2(3800, 5479)
+scale = Vector2(1.03, 1.03)
+
+[node name="Tree42" parent="Trees" instance=ExtResource("1_tree")]
+position = Vector2(3514, 6512)
+scale = Vector2(1.25, 1.25)
+
+[node name="Tree43" parent="Trees" instance=ExtResource("1_tree")]
+position = Vector2(3659, 5215)
+scale = Vector2(0.96, 0.96)
+
+[node name="Tree44" parent="Trees" instance=ExtResource("1_tree")]
+position = Vector2(5470, 5882)
+scale = Vector2(1.06, 1.06)
+
+[node name="Tree45" parent="Trees" instance=ExtResource("1_tree")]
+position = Vector2(6237, 4535)
+scale = Vector2(1.03, 1.03)
+
+[node name="Rocks" type="Node2D" parent="."]
+
+[node name="Rock01" parent="Rocks" instance=ExtResource("2_rock")]
+position = Vector2(5584, 5358)
+scale = Vector2(1.21, 1.21)
+rotation = 1.56
+
+[node name="Rock02" parent="Rocks" instance=ExtResource("2_rock")]
+position = Vector2(5543, 4463)
+scale = Vector2(1.54, 1.54)
+rotation = 5.61
+
+[node name="Rock03" parent="Rocks" instance=ExtResource("2_rock")]
+position = Vector2(4229, 5233)
+scale = Vector2(0.91, 0.91)
+rotation = 0.76
+
+[node name="Rock04" parent="Rocks" instance=ExtResource("2_rock")]
+position = Vector2(4385, 5154)
+scale = Vector2(0.86, 0.86)
+rotation = 4.2
+
+[node name="Rock05" parent="Rocks" instance=ExtResource("2_rock")]
+position = Vector2(3901, 6582)
+scale = Vector2(0.92, 0.92)
+rotation = 4.5
+
+[node name="Rock06" parent="Rocks" instance=ExtResource("2_rock")]
+position = Vector2(6104, 4899)
+scale = Vector2(0.91, 0.91)
+rotation = 5.54
+
+[node name="Rock07" parent="Rocks" instance=ExtResource("2_rock")]
+position = Vector2(5315, 4299)
+scale = Vector2(1.4, 1.4)
+rotation = 0.59
+
+[node name="Rock08" parent="Rocks" instance=ExtResource("2_rock")]
+position = Vector2(6135, 4316)
+scale = Vector2(0.93, 0.93)
+rotation = 2.71
+
+[node name="Rock09" parent="Rocks" instance=ExtResource("2_rock")]
+position = Vector2(4789, 5125)
+scale = Vector2(0.96, 0.96)
+rotation = 2.0
+
+[node name="Rock10" parent="Rocks" instance=ExtResource("2_rock")]
+position = Vector2(6357, 4898)
+scale = Vector2(0.82, 0.82)
+rotation = 3.48
+
+[node name="Rock11" parent="Rocks" instance=ExtResource("2_rock")]
+position = Vector2(3474, 4974)
+scale = Vector2(1.07, 1.07)
+rotation = 3.92
+
+[node name="Rock12" parent="Rocks" instance=ExtResource("2_rock")]
+position = Vector2(5498, 3663)
+scale = Vector2(0.89, 0.89)
+rotation = 5.77
+
+[node name="Rock13" parent="Rocks" instance=ExtResource("2_rock")]
+position = Vector2(4336, 3829)
+scale = Vector2(0.87, 0.87)
+rotation = 1.71
+
+[node name="Rock14" parent="Rocks" instance=ExtResource("2_rock")]
+position = Vector2(6590, 4143)
+scale = Vector2(1.02, 1.02)
+rotation = 0.81
+
+[node name="Rock15" parent="Rocks" instance=ExtResource("2_rock")]
+position = Vector2(5129, 6168)
+scale = Vector2(1.46, 1.46)
+rotation = 1.62
+
+[node name="Rock16" parent="Rocks" instance=ExtResource("2_rock")]
+position = Vector2(4011, 5597)
+scale = Vector2(1.54, 1.54)
+rotation = 3.58
+
+[node name="Rock17" parent="Rocks" instance=ExtResource("2_rock")]
+position = Vector2(6268, 4739)
+scale = Vector2(0.87, 0.87)
+rotation = 0.36
+
+[node name="Rock18" parent="Rocks" instance=ExtResource("2_rock")]
+position = Vector2(6218, 4150)
+scale = Vector2(1.14, 1.14)
+rotation = 0.45
+
+[node name="Bushes" type="Node2D" parent="."]
+
+[node name="Bush01" parent="Bushes" instance=ExtResource("3_bush")]
+position = Vector2(3468, 5998)
+scale = Vector2(0.94, 0.94)
+
+[node name="Bush02" parent="Bushes" instance=ExtResource("3_bush")]
+position = Vector2(4467, 3743)
+scale = Vector2(1.14, 1.14)
+
+[node name="Bush03" parent="Bushes" instance=ExtResource("3_bush")]
+position = Vector2(4310, 3672)
+scale = Vector2(1.01, 1.01)
+
+[node name="Bush04" parent="Bushes" instance=ExtResource("3_bush")]
+position = Vector2(3898, 5258)
+scale = Vector2(0.9, 0.9)
+
+[node name="Bush05" parent="Bushes" instance=ExtResource("3_bush")]
+position = Vector2(4497, 5946)
+scale = Vector2(0.95, 0.95)
+
+[node name="Bush06" parent="Bushes" instance=ExtResource("3_bush")]
+position = Vector2(5558, 6306)
+
+[node name="Bush07" parent="Bushes" instance=ExtResource("3_bush")]
+position = Vector2(3848, 4061)
+
+[node name="Bush08" parent="Bushes" instance=ExtResource("3_bush")]
+position = Vector2(4677, 5975)
+scale = Vector2(1.02, 1.02)
+
+[node name="Bush09" parent="Bushes" instance=ExtResource("3_bush")]
+position = Vector2(4587, 5225)
+scale = Vector2(1.1, 1.1)
+
+[node name="Bush10" parent="Bushes" instance=ExtResource("3_bush")]
+position = Vector2(4821, 3474)
+scale = Vector2(1.3, 1.3)
+
+[node name="Bush11" parent="Bushes" instance=ExtResource("3_bush")]
+position = Vector2(3551, 3462)
+scale = Vector2(0.91, 0.91)
+
+[node name="Bush12" parent="Bushes" instance=ExtResource("3_bush")]
+position = Vector2(5471, 5657)
+scale = Vector2(1.29, 1.29)
+
+[node name="Bush13" parent="Bushes" instance=ExtResource("3_bush")]
+position = Vector2(6062, 5170)
+scale = Vector2(1.16, 1.16)
+
+[node name="Bush14" parent="Bushes" instance=ExtResource("3_bush")]
+position = Vector2(4340, 4803)
+scale = Vector2(0.98, 0.98)
+
+[node name="Bush15" parent="Bushes" instance=ExtResource("3_bush")]
+position = Vector2(6294, 6385)
+scale = Vector2(1.15, 1.15)
+
+[node name="Bush16" parent="Bushes" instance=ExtResource("3_bush")]
+position = Vector2(3622, 3931)
+scale = Vector2(0.91, 0.91)
+
+[node name="Bush17" parent="Bushes" instance=ExtResource("3_bush")]
+position = Vector2(5961, 6434)
+scale = Vector2(1.25, 1.25)
+
+[node name="Bush18" parent="Bushes" instance=ExtResource("3_bush")]
+position = Vector2(5164, 4068)
+scale = Vector2(0.92, 0.92)
+
+[node name="Bush19" parent="Bushes" instance=ExtResource("3_bush")]
+position = Vector2(5472, 6146)
+scale = Vector2(1.29, 1.29)
+
+[node name="Bush20" parent="Bushes" instance=ExtResource("3_bush")]
+position = Vector2(5852, 4392)
+scale = Vector2(1.18, 1.18)
+
+[node name="Bush21" parent="Bushes" instance=ExtResource("3_bush")]
+position = Vector2(3585, 5281)
+scale = Vector2(0.97, 0.97)
+
+[node name="Bush22" parent="Bushes" instance=ExtResource("3_bush")]
+position = Vector2(3414, 4478)
+scale = Vector2(1.05, 1.05)
+
+[node name="Books" type="Node2D" parent="."]
+
+[node name="Book01" parent="Books" instance=ExtResource("4_book")]
+position = Vector2(4647, 5540)
+perk_id = "unarmed"
+cap = 35.0
+title = "Книга «Рукопашный бой для всех»"
+
+[node name="Book02" parent="Books" instance=ExtResource("4_book")]
+position = Vector2(4625, 4301)
+perk_id = "melee"
+cap = 40.0
+title = "Книга «Клинок и копьё»"
+
+[node name="Book03" parent="Books" instance=ExtResource("4_book")]
+position = Vector2(4192, 4760)
+perk_id = "first_aid"
+cap = 40.0
+title = "Справочник «Первая помощь»"
+
+[node name="Book04" parent="Books" instance=ExtResource("4_book")]
+position = Vector2(4049, 3304)
+perk_id = "foraging"
+cap = 30.0
+title = "Журнал «Съедобные растения Пустоши»"
+
+[node name="Book05" parent="Books" instance=ExtResource("4_book")]
+position = Vector2(5987, 4123)
+perk_id = "mechanics"
+cap = 45.0
+title = "Руководство «Ремонт своими руками»"
+
+[node name="Book06" parent="Books" instance=ExtResource("4_book")]
+position = Vector2(6479, 3320)
+perk_id = "literacy"
+cap = 30.0
+title = "Букварь выживших"
+
+[node name="Book07" parent="Books" instance=ExtResource("4_book")]
+position = Vector2(3672, 4382)
+perk_id = "carpentry"
+cap = 35.0
+title = "Журнал «Мастерская» №7"
+
+[node name="Dummies" type="Node2D" parent="."]
+
+[node name="Dummy01" parent="Dummies" instance=ExtResource("5_dummy")]
+position = Vector2(4950, 4850)
+
+[node name="Dummy02" parent="Dummies" instance=ExtResource("5_dummy")]
+position = Vector2(5100, 4850)

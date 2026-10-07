@@ -1,0 +1,296 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1"]
+
+[sub_resource type="Theme" id="Theme_small"]
+default_font_size = 13
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1")
+
+[node name="CharPanel" type="PanelContainer" parent="."]
+theme = SubResource("Theme_small")
+layout_mode = 3
+anchors_preset = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 330.0
+offset_bottom = 10.0
+
+[node name="VBox" type="VBoxContainer" parent="CharPanel"]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="CharPanel/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Персонаж"
+
+[node name="HealthRow" type="HBoxContainer" parent="CharPanel/VBox"]
+layout_mode = 2
+
+[node name="HealthTitle" type="Label" parent="CharPanel/VBox/HealthRow"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "Здоровье"
+
+[node name="HealthBar" type="ProgressBar" parent="CharPanel/VBox/HealthRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+modulate = Color(1.0, 0.4, 0.4, 1)
+show_percentage = false
+
+[node name="HealthVal" type="Label" parent="CharPanel/VBox/HealthRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="StaminaRow" type="HBoxContainer" parent="CharPanel/VBox"]
+layout_mode = 2
+
+[node name="StaminaTitle" type="Label" parent="CharPanel/VBox/StaminaRow"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "Выносливость"
+
+[node name="StaminaBar" type="ProgressBar" parent="CharPanel/VBox/StaminaRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+modulate = Color(0.5, 0.85, 0.4, 1)
+show_percentage = false
+
+[node name="StaminaVal" type="Label" parent="CharPanel/VBox/StaminaRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="XpRow" type="HBoxContainer" parent="CharPanel/VBox"]
+layout_mode = 2
+
+[node name="XpTitle" type="Label" parent="CharPanel/VBox/XpRow"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "Опыт"
+
+[node name="XpBar" type="ProgressBar" parent="CharPanel/VBox/XpRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+modulate = Color(0.5, 0.7, 1.0, 1)
+show_percentage = false
+
+[node name="XpVal" type="Label" parent="CharPanel/VBox/XpRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="InfoLabel" type="Label" parent="CharPanel/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "..."
+autowrap_mode = 3
+
+[node name="PerksTitle" type="Label" parent="CharPanel/VBox"]
+layout_mode = 2
+text = "Перки (0–100), наведи для описания"
+
+[node name="PerksScroll" type="ScrollContainer" parent="CharPanel/VBox"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="PerkList" type="VBoxContainer" parent="CharPanel/VBox/PerksScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MapPanel" type="PanelContainer" parent="."]
+theme = SubResource("Theme_small")
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -240.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = 10.0
+grow_horizontal = 0
+
+[node name="MapBox" type="VBoxContainer" parent="MapPanel"]
+layout_mode = 2
+
+[node name="MapTitle" type="Label" parent="MapPanel/MapBox"]
+layout_mode = 2
+text = "Карта местности 1×1 км"
+horizontal_alignment = 1
+
+[node name="MapContainer" type="SubViewportContainer" parent="MapPanel/MapBox"]
+custom_minimum_size = Vector2(220, 220)
+layout_mode = 2
+stretch = true
+
+[node name="MapViewport" type="SubViewport" parent="MapPanel/MapBox/MapContainer"]
+unique_name_in_owner = true
+handle_input_locally = false
+size = Vector2i(220, 220)
+render_target_update_mode = 4
+
+[node name="MapCamera" type="Camera2D" parent="MapPanel/MapBox/MapContainer/MapViewport"]
+position = Vector2(5000, 5000)
+zoom = Vector2(0.022, 0.022)
+
+[node name="Switcher" type="HBoxContainer" parent="."]
+theme = SubResource("Theme_small")
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -255.0
+offset_top = 10.0
+offset_right = 255.0
+offset_bottom = 10.0
+grow_horizontal = 2
+
+[node name="Btn1" type="Button" parent="Switcher"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+text = "1"
+custom_minimum_size = Vector2(165, 44)
+clip_text = true
+
+[node name="Btn2" type="Button" parent="Switcher"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+text = "2"
+custom_minimum_size = Vector2(165, 44)
+clip_text = true
+
+[node name="Btn3" type="Button" parent="Switcher"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+text = "3"
+custom_minimum_size = Vector2(165, 44)
+clip_text = true
+
+[node name="TaskPanel" type="PanelContainer" parent="."]
+theme = SubResource("Theme_small")
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -290.0
+offset_top = -160.0
+offset_right = 290.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TaskBox" type="VBoxContainer" parent="TaskPanel"]
+layout_mode = 2
+
+[node name="Row1" type="HBoxContainer" parent="TaskPanel/TaskBox"]
+layout_mode = 2
+
+[node name="StopBtn" type="Button" parent="TaskPanel/TaskBox/Row1"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+text = "Стоп"
+
+[node name="ChopBtn" type="Button" parent="TaskPanel/TaskBox/Row1"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+text = "Рубить дерево"
+
+[node name="MineBtn" type="Button" parent="TaskPanel/TaskBox/Row1"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+text = "Добывать камень"
+
+[node name="BerryBtn" type="Button" parent="TaskPanel/TaskBox/Row1"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+text = "Собирать ягоды"
+
+[node name="ReadBtn" type="Button" parent="TaskPanel/TaskBox/Row1"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+text = "Читать книги"
+
+[node name="Row2" type="HBoxContainer" parent="TaskPanel/TaskBox"]
+layout_mode = 2
+
+[node name="SpearBtn" type="Button" parent="TaskPanel/TaskBox/Row2"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+text = "Крафт: копьё"
+
+[node name="MealBtn" type="Button" parent="TaskPanel/TaskBox/Row2"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+text = "Крафт: паёк"
+
+[node name="EatBtn" type="Button" parent="TaskPanel/TaskBox/Row2"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+text = "Съесть паёк"
+
+[node name="Row3" type="HBoxContainer" parent="TaskPanel/TaskBox"]
+layout_mode = 2
+
+[node name="PerkSelect" type="OptionButton" parent="TaskPanel/TaskBox/Row3"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+
+[node name="TrainBtn" type="Button" parent="TaskPanel/TaskBox/Row3"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+text = "Тренировать перк"
+
+[node name="Row4" type="HBoxContainer" parent="TaskPanel/TaskBox"]
+layout_mode = 2
+
+[node name="TeacherSelect" type="OptionButton" parent="TaskPanel/TaskBox/Row4"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+
+[node name="LearnBtn" type="Button" parent="TaskPanel/TaskBox/Row4"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+text = "Учиться у него (за деньги)"
+
+[node name="HintLabel" type="Label" parent="TaskPanel/TaskBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = ""
+autowrap_mode = 3
+modulate = Color(0.8, 0.8, 0.8, 1)

@@ -1,0 +1,47 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_main"]
+[ext_resource type="PackedScene" path="res://scenes/world.tscn" id="2_world"]
+[ext_resource type="PackedScene" path="res://scenes/character.tscn" id="3_char"]
+[ext_resource type="PackedScene" path="res://scenes/hud.tscn" id="4_hud"]
+[ext_resource type="Script" path="res://scripts/follow_camera.gd" id="5_cam"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_main")
+
+[node name="World" parent="." instance=ExtResource("2_world")]
+
+[node name="Characters" type="Node2D" parent="."]
+
+[node name="Miron" parent="Characters" instance=ExtResource("3_char")]
+position = Vector2(4650, 4750)
+display_name = "Мирон (боец)"
+body_color = Color(0.85, 0.25, 0.2, 1)
+start_money = 40
+start_perks = {"unarmed": 30.0, "melee": 40.0, "thrown": 15.0, "shotgun": 20.0, "stealth": 10.0, "lumberjack": 25.0, "mining": 15.0}
+
+[node name="Alisa" parent="Characters" instance=ExtResource("3_char")]
+position = Vector2(4800, 4650)
+display_name = "Алиса (инженер)"
+body_color = Color(0.25, 0.5, 0.9, 1)
+start_money = 25
+start_perks = {"mechanics": 45.0, "electrics": 35.0, "carpentry": 30.0, "smithing": 15.0, "literacy": 35.0, "chemistry": 20.0, "teaching": 25.0, "ranged": 10.0}
+
+[node name="Zoya" parent="Characters" instance=ExtResource("3_char")]
+position = Vector2(5350, 4700)
+display_name = "Зоя (врач)"
+body_color = Color(0.3, 0.75, 0.35, 1)
+start_money = 30
+start_perks = {"first_aid": 45.0, "foraging": 40.0, "cooking": 25.0, "hunting": 20.0, "campcraft": 25.0, "farming": 20.0, "teaching": 30.0, "navigation": 15.0}
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(4800, 4700)
+zoom = Vector2(1.6, 1.6)
+limit_left = 0
+limit_top = 0
+limit_right = 10000
+limit_bottom = 10000
+position_smoothing_enabled = true
+script = ExtResource("5_cam")
+
+[node name="HUD" parent="." instance=ExtResource("4_hud")]
